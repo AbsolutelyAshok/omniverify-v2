@@ -48,7 +48,6 @@ def style_base_layout():
 # asdasd
     st.markdown("""
         <style>
-        @import url('https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
                 
@@ -63,28 +62,31 @@ def style_base_layout():
             }
 
             h1 {
-                font-family: 'Climate Crisis', sans-serif !important;
-                font-size: 3.5rem !important;
-                line-height:1.1 1important;
-                margin-bottom:0rem !important;
+                font-family: 'Outfit', sans-serif !important;
+                font-size: 3rem !important;
+                font-weight: 700 !important;
+                line-height: 1.15 !important;
+                margin-bottom: 0 !important;
                 color:#20243A !important;
             }
                 
 
             h2 {
-                font-family: 'Climate Crisis', sans-serif !important;
+                font-family: 'Outfit', sans-serif !important;
                 font-size: 2rem !important;
-                line-height:0.9 !important;
-                margin-bottom:0rem !important;
+                font-weight: 650 !important;
+                line-height: 1.2 !important;
+                margin-bottom: 0 !important;
                 color:#20243A !important;
             }
                 
             h3, h4, p {
-                font-family: 'Outfit', sans-serif;    
+                font-family: 'Outfit', sans-serif !important;
             }
 
             h3, h4 {
                 color:#20243A !important;
+                font-weight: 600 !important;
             }
 
             [data-testid="stWidgetLabel"] p,
