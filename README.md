@@ -37,3 +37,7 @@ The Supabase project must have the tables and permissions expected by the app's 
 4. Deploy and review the build logs if a native face-recognition dependency fails to install.
 
 Dependencies are listed in `requirements.txt`. The repository intentionally does not include a virtual environment; each machine or deployment creates its own from that file.
+
+## Typography
+
+Use **Outfit** as the app's standard font, including for future landing pages. The shared font stack and responsive heading sizes are defined in `src/ui/base_layout.py`; pages that call `style_base_layout()` inherit them. Outfit loads from Google Fonts, with system UI fonts as fallbacks when it is unavailable. Heading sizes use CSS `clamp()` so they scale between phone, tablet, and desktop widths.

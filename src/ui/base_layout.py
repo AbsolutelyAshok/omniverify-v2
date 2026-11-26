@@ -50,6 +50,21 @@ def style_base_layout():
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+        :root {
+            --app-font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont,
+                'Segoe UI', Roboto, Arial, sans-serif;
+        }
+
+        body,
+        .stApp,
+        .stApp button,
+        .stApp input,
+        .stApp textarea,
+        .stApp select,
+        .stApp label {
+            font-family: var(--app-font-family) !important;
+        }
+
                 
          /* Hide Top Bar of streamlit */
                 
@@ -62,8 +77,8 @@ def style_base_layout():
             }
 
             h1 {
-                font-family: 'Outfit', sans-serif !important;
-                font-size: 3rem !important;
+                font-family: var(--app-font-family) !important;
+                font-size: clamp(2rem, 5vw, 3rem) !important;
                 font-weight: 700 !important;
                 line-height: 1.15 !important;
                 margin-bottom: 0 !important;
@@ -72,8 +87,8 @@ def style_base_layout():
                 
 
             h2 {
-                font-family: 'Outfit', sans-serif !important;
-                font-size: 2rem !important;
+                font-family: var(--app-font-family) !important;
+                font-size: clamp(1.5rem, 3.4vw, 2rem) !important;
                 font-weight: 650 !important;
                 line-height: 1.2 !important;
                 margin-bottom: 0 !important;
@@ -81,12 +96,16 @@ def style_base_layout():
             }
                 
             h3, h4, p {
-                font-family: 'Outfit', sans-serif !important;
+                font-family: var(--app-font-family) !important;
             }
 
             h3, h4 {
                 color:#20243A !important;
                 font-weight: 600 !important;
+            }
+
+            h3 {
+                font-size: clamp(1.2rem, 2.5vw, 1.5rem) !important;
             }
 
             [data-testid="stWidgetLabel"] p,
