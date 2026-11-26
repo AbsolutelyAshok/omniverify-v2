@@ -7,8 +7,12 @@
 __pycache__/
 
 venv/
+.venv/
 
 .streamlit/
 
 
 dist/
+
+# Generated local inventory; includes environment-specific paths and packages.
+project_structure.txt

@@ -12,7 +12,8 @@ def enroll_dialog():
 
     if st.button('Enroll now', type='primary', width='stretch'):
         if join_code:
-            res = supabase.table('subjects').select('subject_id, name, subject_code').eq('subject_code', join_code).execute()
+            normalized_code = join_code.strip().upper()
+            res = supabase.table('subjects').select('subject_id, name, subject_code').eq('subject_code', normalized_code).execute()
             if res.data:
                 subject = res.data[0]
                 student_id = st.session_state.student_data['student_id']
@@ -25,5 +26,7 @@ def enroll_dialog():
                     st.success('Succesfully enrolled!')
                     time.sleep(1)
                     st.rerun()
+            else:
+                st.error('Subject code not found. Check the code and try again.')
         else:
             st.warning('Please enter a subject code')

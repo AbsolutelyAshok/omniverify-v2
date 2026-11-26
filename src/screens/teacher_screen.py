@@ -158,6 +158,7 @@ def teacher_tab_take_attendance():
 
                 if not enrolled_students:
                     st.warning('No students enrolled in this course')
+                    return
                 else:
 
                     results, attendance_to_log  = [], []
@@ -188,6 +189,7 @@ def teacher_tab_take_attendance():
 
     with c3:
         if st.button('Use Voice Attendance', type='primary', width='stretch', icon=':material/mic:'):
+            st.session_state.voice_attendance_results = None
             voice_attendance_dialog(selected_subject_id)
 
 
@@ -219,18 +221,23 @@ def teacher_tab_manage_subjects():
                 ("🫂", "Students", sub['total_students']),
                 ("🕰️", "Classes", sub['total_classes']),
             ]
-        def share_btn():
-            if st.button(f"Share Code: {sub['name']}", key=f"share_{sub['subject_code']}", icon=":material/share:"):
-                share_subject_dialog(sub['name'], sub['subject_code'])
-            st.space()
 
-        subject_card(
-            name = sub['name'],
-            code = sub['subject_code'],
-            section = sub['section'],
-            stats=stats,
-            footer_callback=share_btn
-        )
+            def share_btn(subject=sub):
+                if st.button(
+                    f"Share Code: {subject['name']}",
+                    key=f"share_{subject['subject_id']}",
+                    icon=":material/share:",
+                ):
+                    share_subject_dialog(subject['name'], subject['subject_code'])
+                st.space()
+
+            subject_card(
+                name=sub['name'],
+                code=sub['subject_code'],
+                section=sub['section'],
+                stats=stats,
+                footer_callback=share_btn,
+            )
     else:
         st.info("NO SUBJECTS FOUND. CREATE ONE ABOVE")
 
@@ -305,6 +312,7 @@ def teacher_screen_login():
     with c2:
         if st.button("Go back to Home", type='secondary', key='loginbackbtn', shortcut="control+backspace"):
             st.session_state['login_type'] = None
+            st.session_state.teacher_login_type = 'login'
             st.rerun()
 
     st.header('Login using password', text_alignment='center')
@@ -360,6 +368,7 @@ def teacher_screen_register():
     with c2:
         if st.button("Go back to Home", type='secondary', key='loginbackbtn', shortcut="control+backspace"):
             st.session_state['login_type'] = None
+            st.session_state.teacher_login_type = 'login'
             st.rerun()
 
 

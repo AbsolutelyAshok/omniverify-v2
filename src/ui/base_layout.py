@@ -16,6 +16,11 @@ def style_background_home():
                     padding:2.5rem !important;
                     border-radius: 5rem !important;
                     }
+
+                .stApp div[data-testid="stColumn"] h2 {
+                    color:#20243A !important;
+                }
+
         </style>  
 
                 """
@@ -62,6 +67,7 @@ def style_base_layout():
                 font-size: 3.5rem !important;
                 line-height:1.1 1important;
                 margin-bottom:0rem !important;
+                color:#20243A !important;
             }
                 
 
@@ -70,10 +76,20 @@ def style_base_layout():
                 font-size: 2rem !important;
                 line-height:0.9 !important;
                 margin-bottom:0rem !important;
+                color:#20243A !important;
             }
                 
             h3, h4, p {
                 font-family: 'Outfit', sans-serif;    
+            }
+
+            h3, h4 {
+                color:#20243A !important;
+            }
+
+            [data-testid="stWidgetLabel"] p,
+            [data-testid="stImageCaption"] p {
+                color:#20243A !important;
             }
                 
 

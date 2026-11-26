@@ -1,5 +1,5 @@
 import streamlit as st
-from src.database.db import create_subject
+from src.database.db import create_subject, subject_code_exists
 
 
 
@@ -12,12 +12,19 @@ def create_subject_dialog(teacher_id):
 
 
     if st.button("Create Subject Now", type='primary', width='stretch'):
-        if sub_id and sub_name and sub_section:
+        subject_code = sub_id.strip().upper()
+        if subject_code and sub_name.strip() and sub_section.strip():
             try:
-                create_subject(sub_id, sub_name, sub_section, teacher_id)
+                if subject_code_exists(subject_code):
+                    st.warning("That subject code is already in use. Choose a different code.")
+                    return
+                create_subject(subject_code, sub_name.strip(), sub_section.strip(), teacher_id)
                 st.toast("Subject Created Succesfully!")
                 st.rerun()
             except Exception as e:
-                st.error(f"Error: {str(e)}")
+                if "subjects_subject_code_normalized_unique" in str(e):
+                    st.warning("That subject code is already in use. Choose a different code.")
+                else:
+                    st.error(f"Error: {str(e)}")
         else:
             st.warning("Please fill all the fields")

@@ -1,12 +1,13 @@
 import streamlit as st
+from src.components.header import _logo_data_uri
 
 
 def footer_home():
-    logo_url = "https://i.ibb.co/4r5X1FY/apnacollege.png"
+    logo_url = _logo_data_uri()
     
     st.markdown(f"""
-        <div style="margin-top:2rem; display:flex; gap:6px; justify-content:center; items-align:center">
-        <p style="font-weight:bold; color:white;"> OmniVerify</p>  
+        <div style="margin-top:2rem; display:flex; gap:6px; justify-content:center; align-items:center">
+        <p style="font-weight:bold; color:#20243A;"> OmniVerify</p>  
         <img src='{logo_url}' style='max-height:25px' />
         </div>
                 
@@ -14,11 +15,11 @@ def footer_home():
 
 
 def footer_dashboard():
-    logo_url = "https://i.ibb.co/4r5X1FY/apnacollege.png"
+    logo_url = _logo_data_uri()
     
     st.markdown(f"""
-        <div style="margin-top:2rem; display:flex; gap:6px; justify-content:center; items-align:center">
-        <p style="font-weight:bold; color:black;"> OmniVerify</p>  
+        <div style="margin-top:2rem; display:flex; gap:6px; justify-content:center; align-items:center">
+        <p style="font-weight:bold; color:#20243A;"> OmniVerify</p>  
         <img src='{logo_url}' style='max-height:25px' />
         </div>
                 
